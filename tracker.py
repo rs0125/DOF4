@@ -3,6 +3,10 @@ from cvzone.HandTrackingModule import HandDetector
 import socket
 
 
+def dist(L1, L2):
+    return ((L1[0] - L2[0])** 2 + (L1[1] - L2[1]) ** 2 + (L1[2] - L2[2] )** 2) ** 0.5
+
+
 def main():
     print("test kumar")
 
@@ -42,6 +46,7 @@ def main():
             # get landmark list
             lmList = hand['lmList']
             print(lmList)
+            print(dist(lmList[4], lmList[8]) / dist(lmList[0], lmList[12]))
 
             sock.sendto(str.encode(str(data)), serverAddressPort)
 
